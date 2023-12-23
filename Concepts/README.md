@@ -19,6 +19,8 @@
 
     **[⬆ Back to Top](#table-of-contents)**
 
+---
+
 2.  ### Lazy Loading
 
     Lazy loading in React is a technique used to optimize the loading performance of web applications by deferring the loading of certain components or resources until they are actually needed. This can significantly improve the initial load time of a web page, especially in larger applications with numerous components.
@@ -27,17 +29,17 @@
     3. 	React.lazy() Function: React provides a React.lazy() function that lets you create a dynamic import of a component. For example:
 
     import file
-    ```
+    ```jsx
     import { lazy, Suspense } from "react";
     ```
 
     Declaration
-    ```
+    ```jsx
     const About = lazy(() => import('./Components/About/About'))
     ```
 
     Implementation
-    ```
+    ```jsx
     <Route path='/about' element={
         <Suspense fallback={<h1>Hello</h1>}>
             <About />
@@ -45,6 +47,7 @@
     </Route>
     ```
     Loading multiple components in same file
-    ```
+    ```jsx
     const Blog = lazy(() => import('./Components/Blog/Blog').then(module => ({default: module.Blog2})));
     ```
+    **[⬆ Back to Top](#table-of-contents)**
