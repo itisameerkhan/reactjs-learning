@@ -1,4 +1,4 @@
-# ALL YOU NEED TO KNOW ABOUT REACT JS
+# ReactJS Specific Repository
 
 This Repositort contains all about ReactJS including materials, links, hooks, custom hooks, libraries and more.
 
