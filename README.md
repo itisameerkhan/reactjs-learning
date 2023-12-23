@@ -1,6 +1,6 @@
 # ReactJS Specific Repository
 
-This Repositort contains all about ReactJS including materials, links, hooks, custom hooks, libraries and more.
+This Repository contains all about ReactJS including materials, Interview Quesions, links, hooks, custom hooks, libraries and more.
 
 ---
 
