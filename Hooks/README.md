@@ -166,3 +166,65 @@
     You might hear a recommendation to always write code like `setAge(a => a + 1)` if the state you’re setting is calculated from the previous state. There is no harm in it, but it is also not always necessary.
     
     However, if you do multiple updates within the same event, updaters can be helpful. They’re also helpful if accessing the state variable itself is inconvenient (you might run into this when optimizing re-renders).
+
+    ### updating objects and array in state 
+
+    1. state is considered as read-only, so **you should replace it rather than mutate your exsiting object**
+
+    ```jsx
+    const [data, setData] = useState({
+        firstName: 'John',
+        lastName: 'Doe',
+        age: 20,
+        email: 'johndoe@example.com'
+    });
+
+    const handleForm = () => {
+        setData({
+            ...data,
+            email: 'johndoe@yahoo.com'
+        })
+    }
+    ```
+
+    2. ### Nested Object
+
+    ```jsx
+    const [person, setPerson] = useState({
+    name: 'Niki de Saint Phalle',
+    artwork: {
+      title: 'Blue Nana',
+      city: 'Hamburg',
+      image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+    }
+    });
+
+    const handleForm = () => {
+        setPerson({
+            ...person,
+            artwork: {
+                ...person.artwork,
+                title: 'something'
+            }
+        })
+    }
+    ```
+
+    ### 3. updating Arrays
+
+    ```jsx
+    const initialTodos = [
+    { id: 0, title: 'Buy milk', done: true },
+    { id: 1, title: 'Eat tacos', done: false },
+    { id: 2, title: 'Brew tea', done: false },
+    ];
+
+    const [todos, setTodos] = useState(initialTodos);
+
+    const handleChange = () => {
+        setTodos([
+            ...todos,
+            {id: 3, title: 'oats', done: false}
+        ])
+    }
+    ```
