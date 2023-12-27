@@ -8,8 +8,6 @@
 | 1. | [Reconciliation](#reconciliation) 
 | 2. | [Lazy Loading](#lazy-loading) 
 
----
-
 ### Concepts Details
 
 1.  ### Reconciliation
