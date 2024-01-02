@@ -167,6 +167,8 @@
     
     However, if you do multiple updates within the same event, updaters can be helpful. They’re also helpful if accessing the state variable itself is inconvenient (you might run into this when optimizing re-renders).
 
+    [React hooks: not magic, just arrays](https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e)
+
     ### updating objects and array in state 
 
     1. state is considered as read-only, so **you should replace it rather than mutate your exsiting object**
@@ -226,5 +228,109 @@
             ...todos,
             {id: 3, title: 'oats', done: false}
         ])
+    }
+    ```
+    ### 4. Avoiding Recreating the initialState
+
+    React saves the initial state once and ignores it on the next renders.
+
+    ```jsx
+    function TodoList() {
+    const [todos, setTodos] = useState(createInitialTodos());
+    ```
+
+    Although the result of `createInitialTodos()` is only used for the initial render, you’re still calling this function on every render. This can be wasteful if it’s creating large arrays or performing expensive calculations.
+
+    To solve this, you may pass it as an initializer function to `useState` instead:
+
+    ```jsx
+    function TodoList() {
+    const [todos, setTodos] = useState(createInitialTodos);
+    // ...
+    ```
+
+    The difference between passing an initializer and passing the initial state directly
+
+    ### Passing the initializer function 
+
+    #### Passing the initializer function 
+
+    This example passes the initializer function, so the createInitialTodos function only runs during initialization. It does not run when component re-renders, such as when you type into the input.
+
+    ```jsx
+    const [todos, setTodos] = useState(createInitialTodos);
+    ```
+
+    #### Passing the initial state directly 
+
+    This example does not pass the initializer function, so the createInitialTodos function runs on every render, such as when you type into the input. There is no observable difference in behavior, but this code is less efficient.
+
+    ```jsx
+    const [todos, setTodos] = useState(createInitialTodos());
+    ```
+
+    #### I’m getting an error: “Too many re-renders” 
+
+    You might get an error that says: Too many re-renders. React limits the number of renders to prevent an infinite loop. Typically, this means that you’re unconditionally setting state during render, so your component enters a loop: render, set state (which causes a render), render, set state (which causes a render), and so on. Very often, this is caused by a mistake in specifying an event handler:
+
+    ```jsx
+    // 🚩 Wrong: calls the handler during render
+    return <button onClick={handleClick()}>Click me</button>
+
+    // ✅ Correct: passes down the event handler
+    return <button onClick={handleClick}>Click me</button>
+
+    // ✅ Correct: passes down an inline function
+    return <button onClick={(e) => handleClick(e)}>Click me</button>
+    ```
+
+    #### What is Too Many Re-renders error in React?
+
+    The “Too Many Re-renders” error occurs in React when a component enters an infinite loop of rendering and updating. This happens when the component’s render method is repeatedly called, often due to continuous changes in its state or props, without a proper stopping condition. As a result, the component is unable to complete its rendering cycle, causing the application to slow down, freeze, or crash.
+
+    #### Scenarios that Trigger the Warning
+
+    #### 1. useEffect Without Dependency Array
+    
+    When you use useEffect without listing dependencies. This causes the effect to fire with every component re-render, creating an infinite loop.
+
+    ```jsx
+    useEffect(() => {
+        setCount(count + 1);
+    });
+    ```
+
+    In this code, we have an ExampleComponent that uses the useState and useEffect hooks. The useEffect hook is set up without a dependency array, which means it will run every time the component re-renders. Inside the effect, we update the count state using setCount.
+
+    The problem arises because every time setCount is called, it triggers a re-render of the component. Since the useEffect is running after each re-render and also updating the count state, it creates an infinite loop of updates. The component updates, triggers the effect, which updates the state, causing the component to re-render again, and the cycle continues endlessly.
+
+    To fix this issue, you need to provide a dependency array to the useEffect hook. In this scenario, an empty array works because it ensures that the effect runs only once, after the initial render.
+
+    ```jsx
+    useEffect(() => {
+        setCount(count + 1); // This triggers a re-render and updates the count
+    }, []);
+    ```
+
+    [Navigating the Maze of React: Understanding and Resolving the ‘Too Many Re-renders’ Error](https://blog.stackademic.com/navigating-the-maze-of-react-understanding-and-resolving-the-too-many-re-renders-error-6d26da0c7fe4)
+
+
+    #### I’m trying to set state to a function, but it gets called instead 
+
+    ```jsx
+    const [fn, setFn] = useState(someFunction);
+
+    function handleClick() {
+    setFn(someOtherFunction);
+    }
+    ```
+
+    Because you’re passing a function, React assumes that someFunction is an initializer function, and that someOtherFunction is an updater function, so it tries to call them and store the result. To actually store a function, you have to put () => before them in both cases. Then React will store the functions you pass.
+
+    ```jsx
+    const [fn, setFn] = useState(() => someFunction);
+
+    function handleClick() {
+    setFn(() => someOtherFunction);
     }
     ```
