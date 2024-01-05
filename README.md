@@ -10,4 +10,5 @@ This Repository contains all about ReactJS including materials, Interview Quesio
 | --- | -------------------------------------------------------------------------------------------------------------------------------------------|
 | 1.  | [Interview Questions](./Interview%20Questions/)                                                                                            |
 | 2.  | [Concepts](./Concepts/)
-| 2.  | [Hooks](./Hooks/)
+| 3.  | [Hooks](./Hooks/)
+| 4. | [Redux](./Redux/)
