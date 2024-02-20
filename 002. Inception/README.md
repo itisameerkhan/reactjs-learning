@@ -166,7 +166,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(parent);
 ```
 
-> !NOTE
+> [!NOTE]
 > By passing elements in an array as the children, we get warning that says
 
 > [!WARNING]
