@@ -169,5 +169,5 @@ root.render(parent);
 > !NOTE
 > By passing elements in an array as the children, we get warning that says
 
-> !WARNING
+> [!WARNING]
 > Each child in a list should have a unique "key" prop.
