@@ -62,3 +62,112 @@ root.render(heading);
 * This is a method provided by the `root` component created with `ReactDOM.createRoot()`. It is used to render React elements into the DOM. It takes one argument, which is the React element you want to render.
 
 * Here,` root.render(heading)` means that you're rendering the heading element (representing `<h1>Hello World From React</h1>`) into the root component of your React application.
+
+### ✨ What is returned from `React.createElement`
+
+### 💻 Code Snippet 
+```js
+const heading = React.createElement("h1", {id: "heading"}, "Hello World From React");
+console.log(heading);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(heading);
+```
+
+### 💻 Console
+
+![demo](/assets/demo3.png)
+
+### ✨ Returns
+
+**createElement returns a React element object with a few properties:**
+
+* `type`: The type you have passed.
+
+* `props`: Object containing attributes/properties to be passed to the element. May also contain children (`children` prop) used to nest other elements.
+
+* `key` (optional): String or number used to uniquely identify an element among siblings. This is crucial for React's efficient reconciliation process.
+
+* `ref` (optional): Callback function passed to React for accessing the underlying DOM element or component instance.
+
+* `_owner` (internal, mostly null): Internal property for React's component hierarchy tracking.
+
+* `_store` (internal): Internal data structure used by React for optimization.
+
+* `_self` (internal, mostly null): Internal pointer to the element itself.
+
+* `_source` (internal, mostly null): Internal tracking of the element's creation location.
+
+### ✨ `$$typeof` Property:
+
+* **Type**: Symbol
+
+* **Value**: Unique symbol specific to React
+* **Purpose**: Identifies the object as a React element to React's internal mechanisms. This allows React to distinguish regular JavaScript objects from elements during rendering and reconciliation.
+
+## ⭐ Nested Structure
+
+```html
+<div class="parent">
+    <div class="child">
+        <h1>This is a h1 tag</h1>
+    </div>
+</div>
+```
+
+To create nested elements like the above structure in React.
+
+#### 💻 Code Snippet 
+
+```js
+const parent = React.createElement(
+  "div",
+  { id: "parent" },
+  React.createElement(
+    "div",
+    { id: "child" },
+    React.createElement("h1", {}, "This is h1 Tag")
+  )
+);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(parent);
+```
+
+**If we log the parent variable we will get this nested object**
+
+![demo](/assets/demo4.png)
+
+## ⭐ Creating siblings in `React.createElement`
+
+```html
+<div class="parent">
+    <div class="child">
+        <h1>This is a h1 tag</h1>
+        <h1>This is a h1 tag</h1>
+    </div>
+</div>
+```
+
+To create siblings inside parent `div`, we need to make third argument as array
+
+```js
+const parent = React.createElement(
+  "div",
+  { id: "parent" },
+  React.createElement("div", { id: "child" }, [
+    React.createElement("h1", {}, "This is h1 Tag"),
+    React.createElement("h1", {}, "This is h1 Tag"),
+  ])
+);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(parent);
+```
+
+> !NOTE
+> By passing elements in an array as the children, we get warning that says
+
+> !WARNING
+> Each child in a list should have a unique "key" prop.
