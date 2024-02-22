@@ -1,6 +1,6 @@
 # 📍Igniting our App
 
-<img src="https://media.licdn.com/dms/image/D5616AQE4VwlLmDlJLg/profile-displaybackgroundimage-shrink_200_800/0/1686221170579?e=2147483647&v=beta&t=YuBbJlONaNDpAutjM-ZoNVtLPHt3xHbfZlIiHGHztJE" />
+<img src="https://media.istockphoto.com/id/1187370787/video/4k-space-shuttle-takes-off.jpg?s=640x640&k=20&c=LMSsTRAy5Lc6EQaKDWCfZ32SA-_OPhOi_q1jnXQw4FE=" />
 
 ## ⭐ What is **Bundler**?
 
