@@ -37,3 +37,103 @@ Here's why Parcel is commonly used in React projects:
 * Built-in Support for Modern Web Technologies
 * Efficient Production Builds
 * Ease of Use for Beginners
+
+#### 💻 Parcel Installation
+
+```bash
+npm install -D parcel
+```
+
+#### 💻 Execute the Program using this cmd: 
+
+```bash
+npx parcel index.html
+```
+
+![demo](/assets/demo6.png)
+
+#### 💻 Installing react, react-dom via npm
+
+```cmd
+npm install react react-dom
+```
+
+#### 💻 Setup Basic code
+
+```js
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+const parent = React.createElement("div", { id: "parent" }, [
+  React.createElement("div", { id: "child-1" }, [
+    React.createElement("h1", {}, "This is Namaste React🚀"),
+    React.createElement("h2", {}, "This is h2 Tag"),
+  ]),
+  React.createElement("div", { id: "child-2" }, [
+    React.createElement("h1", {}, "This is h1 Tag"),
+    React.createElement("h2", {}, "This is h2 Tag"),
+  ]),
+]);
+
+console.log(parent);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(parent);
+```
+
+#### 💻 Browser
+
+![demo](/assets/demo7.png)
+
+To Fix this issue by simply adding `type="module"` in `script` tag which is present inside `index.html`, we where good to go.
+
+```html
+<script src="App.js" type="module" defer></script>
+```
+
+## ⭐ Parcel 📦
+
+### ⚡ Development Build
+
+* **Purpose**: Creates an optimized version of your React application suitable for production deployment. This involves:
+
+* **Minification**: Reducing code size by removing unnecessary whitespace and comments.
+Concatenation: Combining multiple files into one for efficient loading.
+* **JavaScript transpilation**: Converting modern JavaScript (e.g., ES6) to older, browser-compatible versions if needed.
+* **Uglification**: Making code more compact and difficult to reverse engineer.
+* **Optimization**: Applying techniques to improve performance and reduce file size.
+
+### ⚡ Local Server
+
+* **What it is**: A web server you run on your local machine to host your development application. This allows you to access and test your React app in a browser without deploying it to a remote server.
+
+* **Faster development**: Test changes instantly without needing to deploy or upload files.
+* **Secure development**: Code remains on your machine, protecting sensitive information.
+* **Flexibility**: Customize server settings and environment as needed.
+
+### ⚡ Hot Module Replacement (HMR)
+
+One of the most powerful features of ParcelJS is its built-in support for Hot Module Reloading. With HMR, you can see instant updates in the browser as you modify your code, without the need to manually refresh the page. This greatly speeds up the development process and enhances productivity.
+
+* Parcel tracks changes in your code.
+
+* When a change is detected, it updates the relevant module without reloading the entire page.
+* **Faster development**: See changes instantly without full page reloads.
+* **Improved developer experience**: Makes development more interactive and enjoyable.
+* **Easier debugging**: Helps pinpoint issues without full reloads.
+* CSS changes are automatically applied via HMR with no page reload necessary. This is also true when using a framework with HMR support built in, like React (via Fast Refresh), and Vue.
+
+### ⚡ File Watcher Algorithm — C++
+
+ParcelJS employs a highly efficient file-watching algorithm written in C++, which ensures lightning-fast recompilation of changed files. This algorithm minimizes the time required for rebuilding the project, making development even more efficient.
+
+### ⚡ Cache
+
+The `.parcel-cache` directory in Parcel plays a crucial role in optimizing development workflows by storing information about your project's assets, dependencies, and transformations.
+
+* **Speed Up Builds**: Parcel caches processed information about your files, leading to significantly faster rebuilds when you make changes. This is because it doesn't need to re-analyze and process everything from scratch each time.
+
+* **Granular Caching**: Parcel uses a granular caching system, meaning it only rebuilds files and dependencies that have actually changed. This avoids unnecessary work and further improves build speed.
+
+* **Efficient Development**: By remembering previous processing steps, Parcel can deliver near-instant updates when using Hot Module Replacement (HMR), further enhancing your development experience.
