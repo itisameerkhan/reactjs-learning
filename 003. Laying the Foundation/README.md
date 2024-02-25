@@ -395,3 +395,8 @@ const HeadingComponent = () => {
 ```
 
 All are valid
+
+### ✨ JSX Prevents Injection Attacks
+
+React provides protection against XSS (Cross-Site Scripting) attacks by automatically escaping any values embedded in JSX before rendering them. This mechanism helps ensure that user input or dynamic data included in JSX expressions is treated as plain text rather than executable code, thereby mitigating the risk of injection attacks.
+
