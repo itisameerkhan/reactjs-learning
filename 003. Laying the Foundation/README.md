@@ -63,27 +63,64 @@ When you write JSX code in your JavaScript files and use **Parcel** to bundle yo
 
 **Automatic Transformation(Transpiled)**: When you include JSX code in your JavaScript files, Parcel recognizes the JSX syntax and automatically applies transformations to convert it into regular JavaScript.
 
+**What is a transpiler?**
+
+Transpilers, or source-to-source compilers, are tools that read source code written in one programming language, and produce the equivalent code in another language which is in the same level.
+
 ## ⭐ Babel
 
 <p align="center">
 <img  src="https://gamedevacademy.org/wp-content/uploads/2015/12/babel.png.webp" />
-</p>
 
+</p>
 
 **Babel** is a JavaScript compiler that enables developers to write code using the latest **ECMAScript** standards and modern JavaScript syntax, even if the browsers they're targeting don't yet support those features. In the context of React and JSX, **Babel** plays a crucial role in transforming JSX syntax into standard JavaScript that browsers can understand.
 
-* **Understanding JSX**: Babel first understands JSX, a syntax extension that allows HTML-like code in JavaScript.
+### ✨ What is the reason for using babel?
 
-* **Parsing JSX**: Babel breaks down JSX code into a structured format called an abstract syntax tree (AST).
+Well, all the latest javascript features are not supported in every browser yet. So someone needs to do the converting part right? So babel is here to transpile latest javascript features(ES6 features) which are not understandable to every browser to ES5 which is understandable to every browser.
 
-* **Transforming JSX**: It replaces JSX elements with calls to `React.createElement()`. For example, `<div>Hello</div>` becomes `React.createElement('div', null, 'Hello')`.
+- **Understanding JSX**: Babel first understands JSX, a syntax extension that allows HTML-like code in JavaScript.
 
-* **Handling Attributes**: JSX attributes are turned into properties of the `React.createElement()` call.
+- **Parsing JSX**: Babel breaks down JSX code into a structured format called an abstract syntax tree (AST).
 
-* **Resolving Components**: Custom component names are resolved, ensuring they're correctly imported or defined.
+- **Transforming JSX**: It replaces JSX elements with calls to `React.createElement()`. For example, `<div>Hello</div>` becomes `React.createElement('div', null, 'Hello')`.
 
-* **Preserving JavaScript Expressions**: JavaScript expressions within JSX are preserved and evaluated correctly.
+- **Handling Attributes**: JSX attributes are turned into properties of the `React.createElement()` call.
 
-* **Generating Output Code**: Babel creates transformed JavaScript code with `React.createElement()` calls, ready to be executed by the browser or Node.js.
+- **Resolving Components**: Custom component names are resolved, ensuring they're correctly imported or defined.
+
+- **Preserving JavaScript Expressions**: JavaScript expressions within JSX are preserved and evaluated correctly.
+
+- **Generating Output Code**: Babel creates transformed JavaScript code with `React.createElement()` calls, ready to be executed by the browser or Node.js.
 
 > **JSX => React.createElement => JS Object => HTML element(render)**
+
+#### 💻 next-gen Javascript
+
+```jsx
+const jsxheading = <h1>Namaste React 🚀</h1>;
+```
+
+#### 💻 browser-compatible JavaScript out
+
+```js
+const jsxheading = React.createElement("h1", {}, "Namaste React 🚀");
+```
+
+## ⭐ JSX Superpowers
+
+```jsx
+const heading = <h1>Namaste React🚀</h1>;
+```
+
+In JSX, parentheses `()` are often used to wrap multiple lines of code for clarity and to avoid syntax errors.
+
+```jsx
+const heading = (
+  <div>
+    <h1>Namaste React🚀</h1>
+    <h1>Namaste React🚀</h1>
+  </div>
+);
+```
