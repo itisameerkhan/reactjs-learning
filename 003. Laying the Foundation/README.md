@@ -124,3 +124,108 @@ const heading = (
   </div>
 );
 ```
+
+# 📍 React Components
+
+![demo](/assets/demo16.png)
+
+React components are the building blocks of React applications. They are reusable, self-contained pieces of code that encapsulate a portion of a user interface and its behavior. Components allow developers to break down complex UIs into smaller, manageable pieces, making it easier to develop, test, and maintain applications.
+
+Here are some key aspects of React components:
+
+1. Reusability
+
+2. Encapsulation
+
+3. Composition
+
+4. LifeCycle methods
+
+5. State management
+
+6. Reusable UI Patterns
+
+7. Props
+
+There are 2 types of components in React
+
+1. Class Based Components
+
+2. Function Based Components (**Recommended**)
+
+## ⭐ Functional Components
+
+React functional components, also known as stateless functional components, are a type of React component that are defined as JavaScript functions. They are a simpler and more concise way to create components compared to class components. Functional components are primarily used for presenting UI elements and rendering content based on the props passed to them.
+
+> You should name Function component first letter in capital otherwise you would get error.
+
+### ⚡ Syntax
+
+```jsx
+const HeadingComponent = () => {
+  return <h1>Namaste React Functional Component</h1>;
+};
+```
+
+Functional components are defined as JavaScript functions that return JSX elements.
+
+### ⚡Stateless
+
+Functional components are stateless, meaning they do not have state or lifecycle methods such as `componentDidMount`, `componentDidUpdate`, etc. They are purely presentational and receive data via props.
+
+### ⚡ Readability and Simplicity
+
+Functional components are often simpler and more readable than class components, especially for simple UI elements. They tend to have less boilerplate code and a more straightforward structure.
+
+### ⚡ Easy Testing
+
+Because functional components are purely presentational and depend only on their props, they are typically easier to test compared to class components. You can simply pass different props to the component and test the output.
+
+### ⚡ Hooks
+
+With the introduction of React Hooks in React version 16.8, functional components gained the ability to manage state and side effects. Hooks like `useState`, `useEffect`, and others allow functional components to manage state and perform side effects without needing to be converted to class components.
+
+#### 💻 Rendering React Functional Components
+
+
+```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+
+const HeadingComponent = () => {
+  return <h1>Namaste React Functional Component</h1>
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(<HeadingComponent />);
+```
+
+#### 💻 Rendering Multiple Functional Components
+
+```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+const Title = () => {
+  return (
+    <div className="header">
+      <h1>Namaste React using JSX 🚀</h1>
+    </div>
+  );
+};
+
+const HeadingComponent = () => {
+  return (
+    <div className="container">
+      <Title />
+      <h1 className="heading">Namaste React Functional Component</h1>
+    </div>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(<HeadingComponent />);
+```
