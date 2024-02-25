@@ -229,3 +229,169 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(<HeadingComponent />);
 ```
+
+### ✨ Components Composition
+
+Component composition in React refers to the practice of building larger and more complex user interface **components by combining or nesting smaller, reusable components together**. This approach allows developers to create modular and maintainable code, as well as to follow the principle of separation of concerns.
+
+#### 💻 Code Snippet 
+
+```jsx
+const App = () => {
+  return (
+    <Header />
+    <Main />
+    <Footer />
+  )
+}
+```
+
+### ✨ Combining Javascript elements in JSX
+
+
+To include JavaScript elements within JSX in React, you can use curly braces `{}` to embed JavaScript expressions directly into the JSX code. This allows you to dynamically generate content, calculate values, or include variables within your JSX elements.
+
+#### 💻 Code Snippet
+
+```jsx
+const elements = (
+  <h1 className="elements">
+    Some Elements
+  </h1>
+)
+
+const HeadingComponent = () => {
+  return (
+    <div className="container">
+      {elements}
+      <h1 className="heading">Namaste React Functional Component</h1>
+    </div>
+  );
+};
+```
+
+#### 💻 Code Snippet 
+
+```jsx
+const name = "Ameer Khan";
+
+const App = () => {
+  return (
+    <h1>Hello!, {name}</h1>
+  )
+}
+```
+
+#### 💻 Code Snippet 
+
+```jsx
+const App = () => {
+  return (
+    <h1>{100 + 100}</h1> // 200
+  )
+}
+```
+
+### ✨  Within curly braces `{}` in JSX, you can include a wide range of JavaScript expressions
+
+#### 📌 Mathematical Calculations
+
+```jsx
+const result = <p>The result of 5 + 5 is {5 + 5}.</p>;
+```
+
+#### 📌 JavaScript Variables
+
+```jsx
+const name = 'John';
+const greeting = <p>Hello, {name}!</p>;
+```
+
+#### 📌 JavaScript Functions
+
+```jsx
+function getFullName(firstName, lastName) {
+  return firstName + ' ' + lastName;
+}
+
+const fullName = <p>Full name: {getFullName('John', 'Doe')}</p>;
+```
+
+#### 📌 Conditional Rendering
+
+```jsx
+const isLoggedIn = true;
+
+const loginStatus = (
+  <p>
+    {isLoggedIn ? 'You are logged in' : 'Please log in'}
+  </p>
+);
+```
+
+#### 📌 Array Iteration
+
+```jsx
+const numbers = [1, 2, 3, 4, 5];
+
+const numberList = (
+  <ul>
+    {numbers.map((number) => (
+      <li key={number}>{number}</li>
+    ))}
+  </ul>
+);
+```
+
+#### 📌 Inline Styles
+
+```jsx
+const style = {
+  color: 'blue',
+  fontSize: '20px'
+};
+
+const styledText = <p style={style}>Styled text</p>;
+```
+
+### ✨ Recursive Functional Component
+
+#### 💻 code snippet 
+
+```jsx
+const HeadingComponent = () => {
+  return (
+    <div className="container">
+      <HeadingComponent />
+    </div>
+  );
+};
+```
+
+This code will result in an infinite loop and eventually cause a stack overflow error.
+
+### ✨ Rendering Components (Alternate)
+
+#### 💻 Code snippet 
+
+```jsx
+const Title = () => {
+  return (
+    <div className="header">
+      <h1>Namaste React using JSX 🚀</h1>
+    </div>
+  );
+};
+
+const HeadingComponent = () => {
+  return (
+    <div className="container">
+      <Title />
+      <Title></Title>
+      {Title()}
+    </div>
+  );
+};
+```
+
+All are valid
