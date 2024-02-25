@@ -87,4 +87,5 @@ When you write JSX code in your JavaScript files and use **Parcel** to bundle yo
 * **Generating Output Code**: Babel creates transformed JavaScript code with `React.createElement()` calls, ready to be executed by the browser or Node.js.
 
 > ![NOTE]
+
 > JSX => React.createElement => JS Object => HTML element(render)
