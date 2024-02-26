@@ -396,7 +396,16 @@ const HeadingComponent = () => {
 
 All are valid
 
+* **`{Title}:`** This value describes the TitleComponent as a javascript expression or a variable. The `{}` can embed a javascript expression or a variable inside it.
+
+* `<Title />` : This value represents a Component that is basically returning Some JSX value. In simple terms TitleComponent a function that is returning a JSX value. A component is written inside the `{<  />}` expression.
+
+* `<Title></Title>` : `<Title />` and `<Title></Title`> are equivalent only when `<Title />` has no child components. The opening and closing tags are created to include the child components.
+
 ### ✨ JSX Prevents Injection Attacks
 
 React provides protection against XSS (Cross-Site Scripting) attacks by automatically escaping any values embedded in JSX before rendering them. This mechanism helps ensure that user input or dynamic data included in JSX expressions is treated as plain text rather than executable code, thereby mitigating the risk of injection attacks.
 
+**HTML Entities**: React escapes certain characters by replacing them with their corresponding HTML entities. For example, `<` becomes `&lt;`, `>` becomes `&gt;`, " becomes `&quot;`, and `'` becomes `&#39;`. By converting these characters into their HTML entity equivalents, React ensures that they are displayed as plain text rather than being interpreted as HTML tags or attributes.
+
+**dangerouslySetInnerHTML**: In cases where you need to insert raw HTML or trusted markup, React provides the dangerouslySetInnerHTML attribute. This attribute allows you to set the inner HTML of an element directly, bypassing React's automatic escaping mechanism. However, this should be used sparingly and only with trusted content, as it can introduce XSS vulnerabilities if misused.
