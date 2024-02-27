@@ -1,7 +1,5 @@
 # React Interview Questions & Answers
 
-> Click :star:if you like the project. Pull Request are highly appreciated. Follow me [@Ameer Khan](https://twitter.com/itisameerkhan) for technical updates.
-
 ---
 
 ### Table of Contents
