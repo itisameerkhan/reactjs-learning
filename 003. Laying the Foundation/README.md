@@ -398,9 +398,9 @@ All are valid
 
 * **`{Title}:`** This value describes the TitleComponent as a javascript expression or a variable. The `{}` can embed a javascript expression or a variable inside it.
 
-* `<Title />` : This value represents a Component that is basically returning Some JSX value. In simple terms TitleComponent a function that is returning a JSX value. A component is written inside the `{<  />}` expression.
+* **`<Title />`** : This value represents a Component that is basically returning Some JSX value. In simple terms TitleComponent a function that is returning a JSX value. A component is written inside the `{<  />}` expression.
 
-* `<Title></Title>` : `<Title />` and `<Title></Title`> are equivalent only when `<Title />` has no child components. The opening and closing tags are created to include the child components.
+* **`<Title></Title>`** : `<Title />` and `<Title></Title`> are equivalent only when `<Title />` has no child components. The opening and closing tags are created to include the child components.
 
 ### ✨ JSX Prevents Injection Attacks
 
