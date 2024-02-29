@@ -299,3 +299,11 @@ React uses keys to optimize the rendering of lists. When React updates the UI, i
 **Identifying Elements**: When you update your data and React needs to re-render your list, it uses keys to match new list elements to the old ones. This avoids unnecessary re-rendering of elements that didn't change, thus improving performance.
 
 **Diffing Algorithm**: React's diffing algorithm relies on keys to identify which elements have changed and update the DOM accordingly.  Without unique keys, React may have trouble correctly updating the real DOM.
+
+> **Keys Must Only Be Unique Among Siblings**
+
+### ⚡ Index as Keys
+
+React generally discourages using array indexes as keys for components because it can lead to subtle bugs and performance issues in certain scenarios. While using array indexes as keys might seem convenient, it can cause problems.
+
+### ⚡ Index as a key is an anti-pattern
