@@ -107,3 +107,32 @@ To import all named exports from a file, you can use the * syntax:
 import * as Components from './Components';
 ```
 
+#### 💻 consider this example 
+
+In this example, I want to filter out top restaurant by their average rating. If the average rating in greater than 4.5 then put the result into this `mockData`.
+
+```jsx
+import { data } from "../utils/constants";
+```
+
+```jsx
+let mockData = data;
+  const handleClick = () => {
+    mockData = data.filter((value) => {
+      return value.info.avgRating > 4.5
+    });
+    console.log(mockData);
+};
+```
+
+```jsx
+<div className="res-list">
+    {mockData.map((value, index) => (
+      <RestaurantCard data={value} key={index} />
+    ))}
+</div>
+```
+
+#### 🌐 Output
+
+![demo](/assets/demo20.png)
