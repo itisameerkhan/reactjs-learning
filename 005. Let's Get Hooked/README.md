@@ -136,3 +136,16 @@ let mockData = data;
 #### 🌐 Output
 
 ![demo](/assets/demo20.png)
+
+In this output file we got the filtered result of 2 elements in an array. **but notice the UI doesn't even changed.**
+
+In React, directly assigning a new value to a variable like `mockData = data.filter(...)` without using state does not trigger a re-render of the component. This is because React relies on state management to detect changes and re-render components accordingly.
+
+In your example, `mockData` is a regular JavaScript variable and not part of React's state. Therefore, updating `mockData` does not inform React that the component's state has changed, and React does not re-render the component.
+
+To update the UI in React, you need to use state management. This typically involves using `useState` hook in functional components or `setState` method in class components. When you update the state using these methods, React detects the changes and re-renders the component to reflect the updated state.
+
+## ⭐ React Hooks
+
+React hooks are functions that enable functional components to use state and other React features without writing a class. They were introduced in React version 16.8 to address complex state management and lifecycle methods in functional components. Hooks provide a more concise and readable way to manage state and side effects in React applications.
+
