@@ -304,6 +304,6 @@ React uses keys to optimize the rendering of lists. When React updates the UI, i
 
 ### ⚡ Index as Keys
 
-React generally discourages using array indexes as keys for components because it can lead to subtle bugs and performance issues in certain scenarios. While using array indexes as keys might seem convenient, it can cause problems.
+React generally **discourages** using array indexes as keys for components because it can lead to subtle bugs and performance issues in certain scenarios. While using array indexes as keys might seem convenient, it can cause problems.
 
-### ⚡ Index as a key is an anti-pattern
+React don’t recommend using **indexes** for keys if the order of items may change. This can negatively impact performance and may cause issues with component state.
