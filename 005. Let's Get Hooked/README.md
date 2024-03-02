@@ -148,4 +148,3 @@ To update the UI in React, you need to use state management. This typically invo
 ## ⭐ React Hooks
 
 React hooks are functions that enable functional components to use state and other React features without writing a class. They were introduced in React version 16.8 to address complex state management and lifecycle methods in functional components. Hooks provide a more concise and readable way to manage state and side effects in React applications.
-
