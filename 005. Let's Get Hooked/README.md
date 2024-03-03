@@ -281,4 +281,4 @@ Let’s annotate how this might work internally within React. The following woul
 
 Create two empty arrays: `setters` and `state`
 
-![demo](https://miro.medium.com/v2/resize:fit:786/format:webp/1*LAZDuAEm7nbcx0vWVKJJ2w.png)
+![demo](/assets/demo24.webp)
