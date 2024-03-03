@@ -149,6 +149,14 @@ To update the UI in React, you need to use state management. This typically invo
 
 React hooks are functions that enable functional components to use state and other React features without writing a class. They were introduced in React version 16.8 to address complex state management and lifecycle methods in functional components. Hooks provide a more concise and readable way to manage state and side effects in React applications.
 
+In React, `useState`, as well as any other function starting with **“use”**, is called a Hook.
+
+Hooks are special functions that are only available while React is rendering
+
+* Don’t call Hooks inside loops, conditions, or nested functions
+
+* Only Call Hooks from React Functions
+
 ## ⭐ `useState`
 
 The `useState()` is a Hook that allows you to have state variables in functional components . so basically useState is the ability to encapsulate local state in a functional component. 
@@ -228,3 +236,49 @@ const [count, setCount] = useState(0);
 `count` is a state variable and `setCount` is the setter function.
 
 ![demo](/assets/demo23.png)
+
+#### 💻 This is how they work together in `handleClick`:
+
+```jsx
+const App = () => {
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    setCount(count + 1); // setter function 
+  };
+
+  return (
+    <div className="app">
+      <h1>{count}</h1>
+      <button onClick={handleClick}>ADD+</button>
+    </div>
+  );
+};
+```
+
+## ⭐ React hooks: not magic, just arrays
+
+**State management in hooks is all about arrays**
+
+### ⚡ How could we implement `useState()` ?
+
+```jsx
+const App = () => {
+  const [firstName, setFirstName] = useState("Rudy");
+  const [lastName, setLastName] = useState("Yardley")
+
+  return (
+    <button onClick={() => setFirstName("Fred")}>Fred</button>
+  )
+}
+```
+
+### ⚡ So what’s React going to do with this?
+
+Let’s annotate how this might work internally within React. The following would work within the execution context for rendering a particular component. That means that the data stored here lives one level outside of the component being rendered. This state is not shared with other components but it is maintained in a scope that is accessible to subsequent rendering of the specific component.
+
+#### 💻 1. Initialisation
+
+Create two empty arrays: `setters` and `state`
+
+![demo](https://miro.medium.com/v2/resize:fit:786/format:webp/1*LAZDuAEm7nbcx0vWVKJJ2w.png)
