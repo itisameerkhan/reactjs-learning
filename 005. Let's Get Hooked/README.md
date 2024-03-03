@@ -145,6 +145,86 @@ In your example, `mockData` is a regular JavaScript variable and not part of Rea
 
 To update the UI in React, you need to use state management. This typically involves using `useState` hook in functional components or `setState` method in class components. When you update the state using these methods, React detects the changes and re-renders the components to reflect the updated state.
 
-## ⭐ React Hooks
+# 📍 React Hooks
 
 React hooks are functions that enable functional components to use state and other React features without writing a class. They were introduced in React version 16.8 to address complex state management and lifecycle methods in functional components. Hooks provide a more concise and readable way to manage state and side effects in React applications.
+
+## ⭐ `useState`
+
+The `useState()` is a Hook that allows you to have state variables in functional components . so basically useState is the ability to encapsulate local state in a functional component. 
+
+#### 💻 Importing `useState` from **React**
+
+```jsx
+import { useState } from "react"
+```
+
+#### 💻 Initialization of state 
+
+```jsx
+const [count, setCount] = useState(0);
+```
+
+Inside a functional component, you call the `useState` hook and pass the initial state value as an argument. The `useState` hook returns an array with two elements: **the current state value and a function to update that value.**
+
+### 🚩 When a regular variable isn’t enough.
+
+Here some example of some normal javascript variable used for data to update `count` variable.
+
+```jsx
+const App = () => {
+  const handleClick = () => {
+    count++;
+    console.log(count);
+  };
+  let count = 0;
+  return (
+    <div className="app">
+      <h1>{count}</h1>
+      <button onClick={handleClick}>ADD+</button>
+    </div>
+  );
+};
+```
+
+#### 🌐 data layer updated but not the UI
+
+![demo](/assets/demo22.png)
+
+The `handleClick` event handler is updating a local variable, `count`. But two things prevent that change from being visible:
+
+1. **Local variables don’t persist between renders**. When React renders this component a second time, it renders it from scratch—it doesn’t consider any changes to the local variables.
+
+2. **Changes to local variables won’t trigger renders**. React doesn’t realize it needs to render the component again with the new data.
+
+#### 🧩 To update a component with new data, two things need to happen:
+
+1. Retain the data between renders.
+
+2. Trigger React to render the component with new data **(re-rendering)**.
+
+#### 🧩 The `useState` Hook provides those two things:
+
+1. A state variable to retain the data between renders.
+
+2. A state setter function to update the variable and trigger React to render the component again.
+
+#### 💻 Importing `useState` from **React**
+
+```jsx
+import { useState } from "react"
+```
+
+#### 💻 Adding state variables
+
+```jsx
+let count = 0; // 🚫 Don't use local variable
+```
+
+```jsx
+const [count, setCount] = useState(0);
+```
+
+`count` is a state variable and `setCount` is the setter function.
+
+![demo](/assets/demo23.png)
