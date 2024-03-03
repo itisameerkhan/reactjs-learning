@@ -282,3 +282,81 @@ Let’s annotate how this might work internally within React. The following woul
 Create two empty arrays: `setters` and `state`
 
 ![demo](/assets/demo24.webp)
+
+#### 💻 2 First render
+
+Run the component function for the first time.
+
+Each `useState()` call, when first run, pushes a setter function (bound to a cursor position) onto the setters array and then pushes some state on to the state array.
+
+![demo](https://miro.medium.com/v2/resize:fit:786/format:webp/1*8TpWnrL-Jqh7PymLWKXbWg.png)
+
+#### 💻 3. Subsequent render
+
+Each subsequent render the cursor is reset and those values are just read from each array.
+
+![demo](https://miro.medium.com/v2/resize:fit:786/format:webp/1*qtwvPWj-K3PkLQ6SzE2u8w.png)
+
+#### 💻 4 Event handling
+
+Each setter has a reference to its cursor position so by triggering the call to any setter it will change the state value at that position in the state array.
+
+![demo](https://miro.medium.com/v2/resize:fit:786/format:webp/1*3L8YJnn5eV5ev1FuN6rKSQ.png)
+
+#### 💻 And the naive implementation
+
+```jsx
+let componentHooks = [];
+let currentHookIndex = 0;
+
+const useState = (initialState) => {
+  let pair = componentHooks[currentHookIndex];
+  if(pair) {
+    currentHookIndex++;
+    return pair;
+  }
+  
+  const setState = (nextState) => {
+    pair[0] = nextState;
+    updateDOM();
+  }
+  
+  pair = [initialState, setState];
+  
+  componentHooks[currentHookIndex] = pair;
+  currentHookIndex++;
+  return pair;
+}
+```
+
+### ⚡ State is isolated and private
+
+State is local to a component instance on the screen. In other words, if you render the same component twice, each copy will have completely isolated state! Changing one of them will not affect the other.
+
+#### 💻 code snippet
+
+```jsx
+const Counter = () => {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div className="counter">
+      <h1>{count}</h1>
+      <button onClick={() => setCount(count+1)}>Click</button>
+    </div>
+  )
+}
+const App = () => {
+
+  return (
+    <div className="app">
+    <Counter />
+    <Counter />
+    </div>
+  )
+}
+```
+
+#### 🌐 output
+
+![demo](/assets/demo25.png)
