@@ -357,6 +357,6 @@ const App = () => {
 }
 ```
 
-#### 🌐 output
+#### 🌐 output.
 
 ![demo](/assets/demo25.png)
