@@ -426,3 +426,85 @@ The Document Object Model (DOM) is a programming interface for HTML and XML docu
 ![demo](https://miro.medium.com/v2/resize:fit:828/format:webp/1*b9i7n4XOt1L2AvWzGEY36Q.png)
 
 </p>
+
+## ⭐ Virtual DOM
+
+
+In React, the Virtual DOM is a lightweight, in-memory representation of the actual DOM (Document Object Model). It's a programming concept that React uses internally to improve performance and optimize the updating process of the UI.
+
+Here's how the Virtual DOM works in React:
+
+### ⚡ Initial Rendering:
+
+* When you write React components, you describe the UI using JSX syntax. These components are JavaScript objects that represent the structure and content of the UI.
+
+* When you render a React component, React creates a corresponding Virtual DOM representation of the component and its children.
+
+### ⚡Virtual DOM Structure:
+
+* The Virtual DOM is a tree-like structure that mirrors the structure of the actual DOM.
+Each node in the Virtual DOM represents an element (e.g., a div, span, or custom component) and its associated attributes (e.g., className, onClick).
+
+* React components are translated into Virtual DOM elements with properties that describe how they should appear in the UI.
+
+### ⚡Efficient Updates:
+
+* When a component's state or props change, React re-renders the component and generates a new Virtual DOM representation based on the updated state and props.
+
+* React then compares the new Virtual DOM with the previous Virtual DOM using a process called **reconciliation**.
+
+* React identifies the differences (or "**diffs**") between the old and new Virtual DOM trees and determines what changes need to be applied to the actual DOM.
+
+### ⚡ Minimizing DOM Operations:
+
+* React's reconciliation algorithm is designed to minimize the number of DOM operations required to update the UI.
+
+* Instead of directly manipulating the actual DOM for every change, React computes the minimal set of changes needed and applies them in a batched and optimized manner.
+
+### ⚡ Updating the Actual DOM:
+
+* Once React determines the necessary changes, it updates the actual DOM to reflect the updates made to the Virtual DOM.
+
+* React applies the changes using efficient DOM manipulation techniques, such as batched updates and using the least amount of DOM mutations possible.
+
+<p align="center">
+
+![demo](https://miro.medium.com/v2/resize:fit:828/format:webp/1*pITtRGQSPcWswcZ62gE1dg.png)
+
+</p>
+
+<p align="center">
+
+![demo](https://miro.medium.com/v2/resize:fit:828/format:webp/1*Ck_HUOSdkbLtktXVKmVsYw.png)
+
+</p>
+
+### 🚩 Why Virtual DOM?
+
+Any operation/manipulation which is done directly in the DOM makes the entire DOM re-render which is proven to be too costly and that is where Virtual DOM is used which takes a copy of the actual DOM and does manipulation on that copy and replaces only that particular objects to the real DOM.
+
+### 🚩 DOM Visualization 
+
+#### 💻 Here the sample HTML file which displays the current time and its respective DOM rerenders
+
+```jsx
+const Time = () => {
+
+    const handleTime = () => {
+        setTime(new Date().toLocaleTimeString());
+    }
+
+    setInterval(handleTime, 500);
+
+    const [time, setTime] = useState(new Date().toLocaleTimeString());
+  return (
+    <div className="time">
+        <h1>{time}</h1>
+    </div>
+  )
+}
+```
+
+#### 🌐 Rendering without reload entire DOM
+
+![demo](/assets/demo26.gif)
