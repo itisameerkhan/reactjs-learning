@@ -579,4 +579,51 @@ The diffing algorithm allows React to update the DOM efficiently. The state-of-t
 | 1. | Rendering refers to the process of generating a virtual representation of the UI based on the current state and props of React components.|Reconciliation, on the other hand, is the process of updating the actual DOM to reflect changes in the virtual DOM after rendering.|
 | 2. | When a component is initially mounted or updated due to changes in its state or props, React triggers a rendering process to create a new virtual DOM representation of the component and its children.| When a component is re-rendered, React compares the new virtual DOM with the previous virtual DOM to determine what changes need to be applied to the actual DOM. |
 | 3. | Rendering involves constructing the component tree, processing JSX elements, and generating a virtual DOM structure that mirrors the desired UI layout. | Reconciliation involves identifying the differences (or "diffs") between the old and new virtual DOM trees and applying the necessary updates to the actual DOM to reflect these changes.
- 
+
+## ⭐ Scheduling
+
+If something is offscreen, we can delay any logic related to it. If data is arriving faster than the frame rate, we can coalesce and batch updates. We can prioritize work coming from user interactions (such as an animation caused by a button click) over less important background work (such as rendering new content just loaded from the network) to avoid dropping frames.
+
+* In a UI, it's not necessary for every update to be applied immediately; in fact, doing so can be wasteful, causing frames to drop and degrading the user experience.
+
+* Different types of updates have different priorities — an animation update needs to complete more quickly than, say, an update from a data store.
+
+* A push-based approach requires the app (you, the programmer) to decide how to schedule work. A pull-based approach allows the framework (React) to be smart and make those decisions for you.
+
+> React doesn't currently take advantage of scheduling in a significant way; an update results in the entire subtree being re-rendered immediately. Overhauling React's core algorithm to take advantage of scheduling is the driving idea behind Fiber.
+
+## ⭐ What is a fiber?
+
+In React, "Fiber" refers to an internal reimplementation of the reconciliation algorithm and rendering engine that was introduced in React 16. It's not something developers directly interact with, but it's a critical part of how React works under the hood, influencing the performance and behavior of React applications.
+
+Here's a breakdown of what React Fiber is and why it's important:
+
+### ⚡Incremental Rendering:
+
+* React Fiber enables incremental rendering, allowing React to break the rendering work into smaller units (called fibers) and prioritize updates based on their priority level.
+
+* This means that React can interrupt rendering work, adjust priorities, and resume rendering to ensure a responsive user experience.
+
+### ⚡Concurrent Rendering:
+
+* Fiber introduces the concept of concurrent rendering, enabling React to work on multiple updates concurrently and interleave rendering with other tasks, such as event handling and input processing.
+
+* Concurrent rendering improves the responsiveness of React applications by allowing high-priority updates to be processed quickly, even while other updates are still in progress.
+
+### ⚡Time Slicing:
+
+* React Fiber implements time slicing, a technique that divides rendering work into smaller, discrete chunks (time slices) and allocates time to each slice.
+
+* Time slicing prevents long-running tasks from blocking the main thread, ensuring smooth animations, responsive interactions, and a more predictable user experience.
+
+### ⚡Interruptible and Resumable Rendering:
+
+* Fiber reconciliation is interruptible and resumable, allowing React to pause and resume rendering work as needed.
+
+* This feature enables React to respond to user interactions, prioritize high-priority updates, and adjust rendering based on changing conditions without sacrificing performance.
+
+### ⚡Error Handling and Recovery:
+
+* Fiber introduces error boundaries, a mechanism for capturing and handling errors that occur during rendering or updating components.
+
+* Error boundaries help prevent crashes from propagating up the component tree, allowing React to recover gracefully from errors and continue rendering the rest of the UI.
