@@ -363,3 +363,6 @@ const App = () => {
 
 
 # 📍 React Fibre Architecture
+
+
+React Fiber is an internal implementation detail of React's core algorithm for rendering components. It's a reimplementation of the stack-based reconciler (the old algorithm) with a more efficient, incremental, and prioritized approach to rendering and updating the UI. Fiber is designed to enable better performance, smoother animations, and improved handling of concurrent updates and user interactions.
