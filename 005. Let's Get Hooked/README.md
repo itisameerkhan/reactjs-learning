@@ -534,3 +534,49 @@ React batches multiple changes into a single update, reducing the number of upda
 ![demo](https://miro.medium.com/v2/resize:fit:750/format:webp/1*o8X7VFBBUls2PM70Dtj_ig.gif)
 
 </div>
+
+## ⭐ Diffing Algorithm
+
+React uses a diffing algorithm as part of its reconciliation process to efficiently update the Document Object Model (DOM). When the state of a component changes, React creates a new virtual DOM and compares it with the current DOM. This comparison process, known as “diffing,” allows React to identify the minimum number of operations needed to update the DOM.
+The diffing algorithm in React is responsible for efficiently comparing the old virtual DOM with the new virtual DOM to determine what changes need to be applied to the actual DOM.
+
+### ⚡ The Significance of Efficient Rendering:
+
+Web applications often consist of dynamic content that needs to be updated in response to user interactions, data changes, or other events. Updating the entire Document Object Model (DOM) whenever changes occur can be inefficient and lead to a sluggish user experience. This is where the concept of “reconciliation” and the diffing algorithm come into play.
+
+### ⚡ Reconciliation and the Diffing Algorithm:
+
+Reconciliation is the process of comparing the previous state of the DOM with the new state, identifying the differences, and updating only the necessary parts to reflect the changes. The diffing algorithm is a core part of this reconciliation process in React.js.
+
+### ⚡ Why does React use the Diffing Algorithm?
+
+The diffing algorithm allows React to update the DOM efficiently. The state-of-the-art algorithms that perform an optimal tree diff have a time complexity of O(n³), where n is the number of elements in the tree. This would be prohibitively expensive for large numbers of elements. By using its diffing algorithm, React can perform the necessary operations in O(n) time, significantly reducing the computational cost.
+
+### ⚡How does the Diffing Algorithm works?
+
+1. **Virtual DOM Representation**: React maintains a virtual representation of the DOM, known as the Virtual DOM. When data changes, React creates a new Virtual DOM tree.
+
+2. **Element Diffing:** React performs a diffing process by comparing he previous Virtual DOM tree with the new one. It identifies the differences between the two trees.
+
+3. **Minimal Updates**: Instead of updating the entire DOM, React generates a minimal set of updates needed to transform the current DOM to match the new Virtual DOM.
+
+4. **Batching Updates**: To avoid excessive DOM manipulations, React batched updates and applies them in a single batch. This reduces browser reflows and improves performance.
+
+5. **Keyed Elements**: The use of keys in React components helps the algorithm to accurately identify and track changes in lists, improving efficiency.
+
+### ⚡ Benefits of the Diffing Algorithm:
+
+1. **Performance Optimization**: By updating only the necessary parts of the DOM, React minimizes the impact of rendering updates on performance, resulting in smoother user experiences.
+
+2. **Reduced Browser Reflows**: The algorithm’s ability to batch updates reduces browser reflows, which can be resource-intensive and lead to flickering.
+
+3. **Responsive Applications**: Diffing enables React applications to respond quickly to user interactions and data changes, enhancing overall interactivity.
+
+## ⭐ Reconciliation versus rendering
+
+| sno | Rendering | Reconciliation
+|---|---|---|
+| 1. | Rendering refers to the process of generating a virtual representation of the UI based on the current state and props of React components.|Reconciliation, on the other hand, is the process of updating the actual DOM to reflect changes in the virtual DOM after rendering.|
+| 2. | When a component is initially mounted or updated due to changes in its state or props, React triggers a rendering process to create a new virtual DOM representation of the component and its children.| When a component is re-rendered, React compares the new virtual DOM with the previous virtual DOM to determine what changes need to be applied to the actual DOM. |
+| 3. | Rendering involves constructing the component tree, processing JSX elements, and generating a virtual DOM structure that mirrors the desired UI layout. | Reconciliation involves identifying the differences (or "diffs") between the old and new virtual DOM trees and applying the necessary updates to the actual DOM to reflect these changes.
+ 
