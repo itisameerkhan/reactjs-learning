@@ -366,3 +366,63 @@ const App = () => {
 
 
 React Fiber is an internal implementation detail of React's core algorithm for rendering components. It's a reimplementation of the stack-based reconciler (the old algorithm) with a more efficient, incremental, and prioritized approach to rendering and updating the UI. Fiber is designed to enable better performance, smoother animations, and improved handling of concurrent updates and user interactions.
+
+Introduced from React 16, Fiber Reconciler is the new **reconciliation** algorithm in React. The term Fiber refers to React's data structure (or) architecture, and originates from '**fiber**' - a representation of a node of the DOM tree.
+
+### ⚡Key Features of React Fiber
+
+#### 🚀 Incremental Rendering:
+
+* Fiber breaks down the rendering work into smaller, incremental units called "fibers."
+
+* Instead of rendering the entire component tree in a single pass, Fiber processes these fibers iteratively, allowing for more efficient rendering and updates.
+
+#### 🚀 Priority Scheduling:
+
+* Fiber introduces the concept of task priorities to determine the order in which updates should be processed.
+
+* Tasks are assigned priority levels, such as synchronous (immediate), asynchronous (deferred), or low priority (background), enabling React to prioritize high-priority updates and ensure a responsive user experience.
+
+#### 🚀 Concurrent Rendering:
+
+* Fiber enables concurrent rendering, allowing React to work on multiple updates concurrently and interleave rendering with other tasks, such as event handling and input processing.
+
+* Concurrent rendering improves perceived performance and responsiveness by allowing React to respond to user interactions more quickly.
+
+#### 🚀 Time-Slicing:
+
+* Fiber implements time-slicing, a technique that divides rendering work into smaller, discrete chunks (time slices) and allocates time to each slice.
+
+* Time-slicing prevents long-running tasks from blocking the main thread, ensuring smooth animations, responsive interactions, and a more predictable user experience.
+
+#### 🚀 Interruptible and Resumable:
+
+* Fiber reconciliation is interruptible and resumable, meaning React can pause and resume rendering work as needed.
+
+* This feature allows React to respond to user interactions, prioritize high-priority updates, and adjust rendering based on changing conditions without sacrificing performance.
+
+#### 🚀 Error Handling and Boundaries:
+
+* Fiber introduces error boundaries, a mechanism for capturing and handling errors that occur during rendering or updating components.
+
+* Error boundaries help prevent crashes from propagating up the component tree, allowing React to recover gracefully from errors and continue rendering the rest of the UI.
+
+#### 🚀Better Debugging and Profiling:
+
+* Fiber provides improved debugging and profiling capabilities, allowing developers to inspect the internal state of the rendering process, track performance metrics, and diagnose performance issues more effectively.
+
+## ⭐ Virtual DOM
+
+### 🚩 What is DOM ? 
+
+The Document Object Model (DOM) is a programming interface for HTML and XML documents. It represents the page so that programs can change the document structure, style, and content.
+
+* The DOM represents the document as nodes and object
+
+* It helps Connects Javascript to HTML
+
+<p align="center">
+
+![demo](https://miro.medium.com/v2/resize:fit:828/format:webp/1*b9i7n4XOt1L2AvWzGEY36Q.png)
+
+</p>
