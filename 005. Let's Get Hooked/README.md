@@ -364,6 +364,8 @@ const App = () => {
 
 # 📍 React Fibre Architecture
 
+![demo](https://miro.medium.com/v2/resize:fit:1400/1*GJiR7jC07hARQ1WogY1Ffg.jpeg)
+
 
 React Fiber is an internal implementation detail of React's core algorithm for rendering components. It's a reimplementation of the stack-based reconciler (the old algorithm) with a more efficient, incremental, and prioritized approach to rendering and updating the UI. Fiber is designed to enable better performance, smoother animations, and improved handling of concurrent updates and user interactions.
 
@@ -507,4 +509,28 @@ const Time = () => {
 
 #### 🌐 Rendering without reload entire DOM
 
+<div align="center">
+
 ![demo](/assets/demo26.gif)
+
+</div>
+
+## ⭐ Reconciliation
+
+Reconciliation is the process by which React updates the UI to reflect changes in the component state. The reconciliation algorithm is the set of rules that React uses to determine how to update the UI in the most efficient way possible.
+
+React uses a [virtual DOM](#⭐-virtual-dom) (Document Object Model) to update the UI. The virtual DOM is a lightweight in-memory representation of the real DOM, which allows React to make changes to the UI without manipulating the actual DOM. This makes updates faster, as changing the virtual DOM is less expensive than changing the real DOM.
+
+The reconciliation algorithm works by comparing the current virtual DOM tree to the updated virtual DOM tree, and making the minimum number of changes necessary to bring the virtual DOM in line with the updated state.
+
+### 🚀 Tree diffing: 
+React compares the current virtual DOM tree with the updated virtual DOM tree, and identifies the minimum number of changes necessary to bring the virtual DOM in line with the updated state.
+
+### 🚀 Batching:
+React batches multiple changes into a single update, reducing the number of updates to the virtual DOM and, in turn, the real DOM.
+
+<div align="center">
+
+![demo](https://miro.medium.com/v2/resize:fit:750/format:webp/1*o8X7VFBBUls2PM70Dtj_ig.gif)
+
+</div>
