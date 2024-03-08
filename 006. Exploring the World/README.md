@@ -20,5 +20,4 @@
 
 ## ⭐ `useEffect()`
 
-
 In React, the `useEffect` hook is used to perform side effects in functional components. Side effects can include things like **data fetching**, **DOM manipulation**, or **subscriptions**, which need to be executed after the component has rendered or when certain dependencies have changed. Here's how `useEffect` works:
