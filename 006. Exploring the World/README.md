@@ -18,6 +18,33 @@
 
 </div>
 
+## ⭐ Shimmer UI
+
+Shimmer UI, also known as skeleton loading or skeleton screens, is a technique used in user interface design to provide users with visual feedback while content is being loaded or fetched asynchronously. It involves displaying placeholder elements or animations that mimic the layout and structure of the actual content that will be displayed once it's loaded.
+
+![demo](/assets/demo27.png)
+
+### 🌐Traditional Approach (Without Shimmer UI):
+
+* In this approach, when the page loads, the frontend waits for the data to be fetched from the backend before rendering anything on the screen.
+
+* This means that users may experience a blank or empty screen until the data is fetched and rendered, which can lead to a poor user experience, especially if the data fetching process takes time.
+
+![demo](/assets/demo28.png)
+
+### 🌐 With Shimmer UI:
+
+* In this approach, when the page loads, instead of displaying a blank screen, the frontend shows a placeholder or "shimmer" UI. 
+
+* This placeholder UI typically consists of animated loading indicators or placeholders that mimic the layout of the actual content.
+
+* While the shimmer UI is being displayed, the frontend asynchronously fetches the data from the backend in the background.
+Once the data is fetched, the frontend replaces the shimmer UI with the actual content, providing users with visual feedback that something is happening in the background.
+
+* This approach enhances the user experience by reducing perceived loading times and providing users with a more engaging and interactive interface, even while data is being fetched.
+
+![demo](/assets/demo29.png)
+
 ## ⭐ `useEffect()`
 
 In React, the `useEffect` hook is used to perform side effects in functional components. Side effects can include things like **data fetching**, **DOM manipulation**, or **subscriptions**, which need to be executed after the component has rendered or when certain dependencies have changed. Here's how `useEffect` works
