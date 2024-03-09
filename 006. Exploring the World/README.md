@@ -110,24 +110,20 @@ const Body = () => {
 
 ### 🌐 Lets debug code
 
-![demo](/assets/demo31.png)
+<div align="center">
 
+![demo](/assets/demo35.gif)
+
+
+</div>
 * On the First render the state variable is empty array.
 
 * So it will the shimmer ui
----
-![demo](/assets/demo32.png)
 
 * When the component rendered for the first time with shimmer ui.
 
 * Its starts executing the callback function inside `useEffect` and we get the data.
 
----
-![demo](/assets/demo33.png)
-
 * once we got the data from the API. Then we set the state variable with the new data and which is then triggers the re-render.
-
----
-![demo](/assets/demo34.png)
 
 * Actual data got from state variable and UI updated.
