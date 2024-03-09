@@ -48,3 +48,21 @@ Once the data is fetched, the frontend replaces the shimmer UI with the actual c
 ## ⭐ `useEffect()`
 
 In React, the `useEffect` hook is used to perform side effects in functional components. Side effects can include things like **data fetching**, **DOM manipulation**, or **subscriptions**, which need to be executed after the component has rendered or when certain dependencies have changed. Here's how `useEffect` works
+
+### ⚡ Declaring useEffect
+
+```jsx
+import { useEffect } from "react";
+```
+
+### ⚡ Syntax
+
+* `useEffect` takes two arguments: a **callback function** and an **optional array of dependencies**.
+
+* The callback function is the side effect you want to perform. It will run after the component has rendered and after every update.
+
+* The optional array of dependencies allows you to specify values that the effect depends on. If any of these values change between renders, the effect will re-run. If the array is empty, the effect will only run once after the initial render.
+
+**useEffect is a React Hook that lets you synchronize a component with an external system.**
+
+![demo](/assets/demo30.png)
