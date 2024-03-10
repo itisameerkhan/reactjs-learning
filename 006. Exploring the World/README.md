@@ -122,7 +122,7 @@ const Body = () => {
 
 * When the component rendered for the first time with shimmer ui.
 
-* Its starts executing the callback function inside `useEffect` and we get the data.
+* Its starts executing the callback function inside `useEffect()` and we get the data.
 
 * once we got the data from the API. Then we set the state variable with the new data and which is then triggers the re-render.
 
