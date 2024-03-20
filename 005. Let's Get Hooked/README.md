@@ -273,6 +273,35 @@ const App = () => {
 }
 ```
 
+### ⚡ Do and Dont's with `useState`
+
+#### 🚫 1. Don't call the `useState` outside the functional component
+
+In React, the useState hook is designed to be called only within the body of a functional component, not outside of it.
+
+![demo](/assets/demo37.png)
+
+#### 🚫 2. Don't call `useState` in `if` statement
+
+```jsx
+if(something) {
+  const [count, setCount] = useState(0) ❌
+}
+```
+
+Calling `useState` within an if statement or any conditional block in a functional component is not recommended in React. This is because the order of hooks, including `useState`, must remain consistent across all renders of the component. React relies on the order of hooks to correctly associate state variables with their corresponding component instances.
+
+#### 🚫 2. Don't call `useState` in `for` loop statement
+
+```jsx
+for(let i=0;i<100;i++) {
+  const [count, setCount] = useState(0);
+}
+```
+
+Calling `useState` inside a loop, such as a for loop, is not recommended in React. This is because React requires that hooks, including `useState`, are called in the same order on every render of the component. Placing `useState` inside a loop could result in its conditional execution, violating the rules of hooks and leading to unpredictable behavior or errors.
+
+
 ### ⚡ So what’s React going to do with this?
 
 Let’s annotate how this might work internally within React. The following would work within the execution context for rendering a particular component. That means that the data stored here lives one level outside of the component being rendered. This state is not shared with other components but it is maintained in a scope that is accessible to subsequent rendering of the specific component.

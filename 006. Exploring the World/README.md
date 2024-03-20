@@ -127,3 +127,54 @@ const Body = () => {
 * once we got the data from the API. Then we set the state variable with the new data and which is then triggers the re-render.
 
 * Actual data got from state variable and UI updated.
+
+
+### ⚡ When will the `useEffect` hook called ?
+
+The `useEffect` hook in React can be called in **three** different scenarios based on the **dependency array** provided to it. These scenarios correspond to whether the **dependency array** is empty, contains values, or is not provided at all. Let's explore each scenario:
+
+![demo](/assets/demo36.png)
+
+#### ⚙️ No Dependency Array (No Second Argument)
+
+```jsx
+useEffect(() => {
+
+});
+```
+
+* When no dependency array is provided (i.e., `useEffect` is called without a second argument), the effect runs after every render of the component, including the initial render.
+
+* This behavior is useful for running effects that depend on any change in the component's state or props.
+
+* The effect runs both during the initial render and after subsequent re-renders, regardless of whether any specific values have changed.
+
+#### ⚙️ Empty Dependency Array (`[]`):
+
+```jsx
+useEffect(() => {
+
+},[]);
+```
+
+* When the dependency array is empty, the `useEffect` hook is called only once after the initial render of the component.
+
+* The effect runs during the initial render, and subsequent re-renders do not trigger the effect to run again.
+
+* This behavior is useful for running effects that should only be performed once when the component mounts, similar to the `componentDidMount` lifecycle method in class components.
+
+#### ⚙️ Dependency Array with Values:
+
+```jsx
+useEffect(() => {
+
+},[someValue]);
+```
+
+* When a dependency array containing values is provided to the `useEffect` hook, the effect runs after the initial render and after every subsequent render if any of the values in the dependency array have changed since the previous render.
+
+* The effect only runs when one or more values in the dependency array have changed between renders.
+
+* If the values in the dependency array remain unchanged between renders, the effect does not run again.
+
+* This behavior is useful for running effects that depend on specific values and should only re-run when those values change.
