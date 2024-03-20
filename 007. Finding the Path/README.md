@@ -137,6 +137,8 @@ same for the contact us page, when you visited the URL `localhost:1234/contact`.
 
 ![demo](/assets/demo39.png)
 
+### ✨ Handling random URL
+
 but when you visit some other random page, it will give this page
 
 ![demo](/assets/demo40.png)
@@ -167,3 +169,32 @@ const appRouter = createBrowserRouter([
 When you visit some other random unrelated URL you will displayed with custom error component like this
 
 ![demo](/assets/demo41.png)
+
+### ⚡ `useRouteError`
+
+The `useRouteError` hook in React Router v6 is used in conjunction with the `errorElement` prop to handle errors that occur during the rendering of a specific route. It provides access to the error object and other useful information related to the error.
+
+#### 💻 Define an error component
+
+```jsx
+import { useRouteError } from "react-router-dom"
+
+const Error = () => {
+  const error = useRouteError();
+  console.log(error);
+  return (
+    <div className="error">
+      <h1>OOPS! Something went wrong</h1>
+      <h1>
+        {error.status} {error.statusText}
+      </h1>
+    </div>
+  );
+};
+
+export default Error;
+```
+
+#### 💻 console
+
+![demo](/assets/demo42.png)
