@@ -301,3 +301,41 @@ By using anchor tags, when we navigate to different route URL, our web page relo
 ![demo](/assets/demogif1.gif)
 
 **But in React we need to render components according to the route URL path provided**
+
+## ⚡ `<Link>`
+
+A `<Link>` is an element that lets the user navigate to another page by clicking or tapping on it. In react-router-dom, a `<Link>` renders an accessible `<a>` element with a real href that points to the resource it's linking to.
+
+In React Router, the `<Link>` component is a navigation element that allows you to navigate between different routes or pages within your single-page application. When a user clicks on a `<Link>` component, React Router prevents the browser's default behavior of sending a request to the server and performing a full page refresh. Instead, it updates the URL in the browser's address bar and renders the appropriate component associated with the new URL, providing a smooth and efficient client-side routing experience without reloading the entire page.
+
+#### 💻 code snippet 
+
+```jsx
+
+const Header = () => {
+  return (
+    <>
+      <div className="header">
+        <div className="left">
+          <h1>Namaste Food</h1>
+        </div>
+        <div className="right">
+          <p>
+          <Link to={"/"}>Home</Link>
+          </p>
+          <p>
+            <Link to={"/about"}>About us</Link>
+          </p>
+          <p>Contact</p>
+          <p>Cart</p>
+        </div>
+      </div>
+      <div className="header-temp"></div>
+    </>
+  );
+};
+```
+
+#### 💻 client server 
+
+![demo](/assets/demogif2.gif)
