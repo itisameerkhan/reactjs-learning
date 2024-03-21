@@ -287,3 +287,17 @@ const appRouter = createBrowserRouter([
   },
 ]);
 ```
+
+## ⚡ Routing different pages
+
+In normal web application, when we required to navigate to the different page with the help of anchor tag.
+
+```html
+<a href="/about">About</a>
+```
+
+By using anchor tags, when we navigate to different route URL, our web page reloads again and again consider this example
+
+![demo](/assets/demogif1.gif)
+
+**But in React we need to render components according to the route URL path provided**
