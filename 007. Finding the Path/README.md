@@ -339,3 +339,39 @@ const Header = () => {
 #### 💻 client server 
 
 ![demo](/assets/demogif2.gif)
+
+## ⚡ Dynamic Routing
+
+Dynamic routing in React Router allows you to handle URLs with dynamic segments, where parts of the URL are variable rather than fixed. This is useful for scenarios where you want to display content based on parameters passed in the URL. One common use case is displaying details for a specific item or resource, such as a user profile, product page, or restaurant details.
+
+In React Router, dynamic segments in URLs are defined using colon (`:`) notation. For example, `/restaurants/:resId` defines a route where `:resId` is a dynamic parameter representing the ID of a restaurant.
+
+#### 💻 code snippet for dynamic routing
+
+```jsx
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/restaurants/:resId", // <----- Dynamic routing
+        element: <RestaurantMenu />
+      }
+    ],
+  },
+]);
+```
