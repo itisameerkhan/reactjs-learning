@@ -375,3 +375,5 @@ const appRouter = createBrowserRouter([
   },
 ]);
 ```
+
+## ⚡ `useParams`
