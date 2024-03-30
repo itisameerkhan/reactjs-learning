@@ -293,7 +293,7 @@ render() {
 }
 ```
 
-In this above calling `setState` method and updating only the `count1` and without copying the entire state varaible using spred opeartor `(...)`.
+In this above calling `setState` method and updating only the `count1` and without copying the entire state variable using spread operator `(...)`.
 
 This is totally fine, Because `setState` only updates the object passed into it and it will not touch anything in the state variable
 
@@ -468,3 +468,45 @@ First componentDidMount called
 Second componentDidMount called
 parentclass ComponentDidMount Called
 ```
+
+In React, when multiple component instances are created within the same parent component and are rendered together, React utilizes batching to optimize performance. Batching is the process of bundling multiple state updates and re-renders into a single batch to minimize DOM manipulations and improve performance.
+
+## ⭐ React Component Life Cycle
+
+![demo](/assets/demo44.png)
+
+The React component lifecycle refers to a series of methods that are invoked at different stages in the lifecycle of a React component. These methods allow you to hook into various points during a component's existence, from initialization to removal from the DOM. Understanding the component lifecycle is crucial for building React applications efficiently and handling component behavior effectively.
+
+1. **Mounting**
+
+2. **Updating**
+
+3. **Unmounting**
+
+### ⚡ Mounting
+
+Mounting is the phase in the React component lifecycle where an instance of a component is created and inserted into the DOM. During the mounting phase, React initializes the component, renders it, and adds it to the DOM. This phase consists of several lifecycle methods that are called in a specific order:
+
+**`constructor(props)`**:
+
+* This is the first method called when a component is created.
+
+* It's used for initializing state and binding event handlers.
+
+* You should always call `super(props)` before any other statement in the constructor.
+
+**`render()`**:
+
+* This method is responsible for rendering the component's UI.
+
+* It returns the JSX or React elements that represent the component's output.
+
+* The `render()` method must be pure, meaning it should not modify component state, props, or cause side effects.
+
+**`componentDidMount()`**:
+
+* This method is called after the component is rendered for the first time and inserted into the DOM.
+
+* It's commonly used for performing initialization tasks that require access to the DOM, such as fetching data from an API, setting up event listeners, or initializing third-party libraries.
+
+* This is a good place to perform any asynchronous operations that are necessary for the component to function properly.
