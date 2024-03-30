@@ -511,3 +511,76 @@ Mounting is the phase in the React component lifecycle where an instance of a co
 * It's commonly used for performing initialization tasks that require access to the DOM, such as fetching data from an API, setting up event listeners, or initializing third-party libraries.
 
 * This is a good place to perform any asynchronous operations that are necessary for the component to function properly.
+
+## ⭐ Making API Calls
+
+```jsx
+ constructor(props) {
+    super(props);
+
+    this.state = {
+      userInfo: {},
+    };
+  }
+
+  async componentDidMount() {
+    const data = await fetch("https://api.github.com/users/akshaymarch7");
+    const json = await data.json();
+
+    this.setState({
+      userInfo: json,
+    });
+  }
+```
+
+## ⭐ Updating
+
+### ⚡ `componentDidUpdate`
+
+`componentDidUpdate()` is a lifecycle method in React class components that is invoked immediately after updating occurs. It is called every time the component updates, either due to changes in props or state. 
+
+**When Does it Run?**:
+
+* `componentDidUpdate()` is called after the component's `render()` method has been called and any updates to the DOM have been applied.
+
+* It is invoked every time the component updates, except for the initial render.
+
+#### 💻 code snippet 
+
+```jsx
+class UserClass extends React.Component {
+  constructor(props) {
+    console.log("constructor");
+    super(props);
+
+    this.state = {
+      userInfo: {},
+      count: 0,
+    };
+  }
+
+  componentDidUpdate() {
+    console.log("componentDidUpdate");
+  }
+
+  render() {
+
+    console.log("render");
+
+    const { count } = this.state;
+
+    return (
+      <div className="user-class">
+        <h1>Count: {count}</h1>
+        <button onClick={() => {
+          this.setState({
+            count: this.state.count + 1,
+          })
+        }}>INCREASE</button>
+      </div>
+    );
+  }
+}
+```
+
+![demo](/assets/demogif6.gif)
