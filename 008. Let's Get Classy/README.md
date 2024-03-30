@@ -293,6 +293,178 @@ render() {
 }
 ```
 
-In this above calling `setState` method and updating only the `count1` and without copying the entire state varaible using spred opeartor `(...)`. 
+In this above calling `setState` method and updating only the `count1` and without copying the entire state varaible using spred opeartor `(...)`.
 
 This is totally fine, Because `setState` only updates the object passed into it and it will not touch anything in the state variable
+
+### ⚡ `componentDidMount()`
+
+`componentDidMount` is one of the lifecycle methods available in class components in React. It's called immediately after a component is mounted (i.e., inserted into the DOM tree). This method is commonly used for performing initialization tasks, such as fetching data from a remote server, setting up subscriptions, or initializing third-party libraries.
+
+**When Does it Run?**: `componentDidMount` is invoked once, immediately after the initial rendering of the component. This means it runs only once during the lifecycle of the component, right after the component has been added to the DOM.
+
+**Fetching Data**: One of the most common use cases for `componentDidMount` is fetching data from an external source, such as an API. Since `componentDidMount` is called after the initial render, it's a suitable place to initiate network requests to fetch data asynchronously.
+
+#### 💻 Code Snippet
+
+```jsx
+class UserClass extends React.Component {
+  constructor(props) {
+    console.log("constructor called");
+    super(props);
+
+    this.state = {
+      count: 0,
+    };
+  }
+  render() {
+    console.log("render called");
+    const { count } = this.state;
+
+    return (
+      <div className="user-class">
+        <h1>Class based Component</h1>
+        <h2>Count : {count}</h2>
+
+        <button
+          onClick={() => {
+            this.setState({
+              count: this.state.count + 1,
+            });
+            console.log("count ->", count);
+          }}
+        >
+          INCREASE
+        </button>
+      </div>
+    );
+  }
+
+  componentDidMount() {
+    {
+      /* <--- component did mount*/
+    }
+    console.log("ComponentDidMount Called");
+  }
+}
+```
+
+#### 💻 output
+
+![demo](/assets/demo43.png)
+
+#### 💻 Code snippet
+
+```jsx
+class ChildClass extends React.Component {
+  constructor(props) {
+    console.log("Childclass constructor called");
+    super(props);
+  }
+
+  render() {
+    console.log("child class render called");
+
+    return <h1>something</h1>;
+  }
+
+  componentDidMount() {
+    console.log("childclass component did mount called");
+  }
+}
+
+class UserClass extends React.Component {
+  constructor(props) {
+    console.log("parent class constructor called");
+    super(props);
+  }
+  render() {
+    console.log("parent class render called");
+
+    return (
+      <div className="user-class">
+        <ChildClass />
+        <h1>something</h1>
+      </div>
+    );
+  }
+
+  componentDidMount() {
+    console.log("parentclass ComponentDidMount Called");
+  }
+}
+```
+
+#### 🌐 console
+
+```
+parent class constructor called
+parent class render called
+Childclass constructor called
+child class render called
+childclass component did mount called
+parentclass ComponentDidMount Called
+```
+
+![demo](/assets/demogif5.gif)
+
+#### 💻 Code snippet
+
+```jsx
+class ChildClass extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log(this.props.name + " constructor called");
+  }
+
+  render() {
+    console.log(this.props.name + " render called");
+
+    return <h1>class component -> {this.props.name}</h1>;
+  }
+
+  componentDidMount() {
+    console.log(this.props.name + " componentDidMount called");
+  }
+}
+
+class ParentClass extends React.Component {
+  constructor(props) {
+    console.log("parent class constructor called");
+    super(props);
+
+    this.state = {
+      count: 0,
+    };
+  }
+  render() {
+    console.log("parent class render called");
+    const { count } = this.state;
+
+    return (
+      <div className="user-class">
+        <ChildClass name={"First"} />
+        <ChildClass name={"Second"} />
+      </div>
+    );
+  }
+
+  componentDidMount() {
+    console.log("parentclass ComponentDidMount Called");
+  }
+}
+```
+
+#### 🌐 console
+
+```
+parent class constructor called
+parent class render called
+First constructor called
+First render called
+Second constructor called
+Second render called
+First componentDidMount called
+Second componentDidMount called
+parentclass ComponentDidMount Called
+```
