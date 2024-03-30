@@ -219,5 +219,80 @@ render() {
 
 ![demo](/assets/demogif3.gif)
 
-> [!WARNING]
-> Not Recommended
+> [!NOTE]
+> Never Update State Variables Directly
+
+### ⚡ `this.setState()`
+
+`this.setState()` is a method provided by React for updating the state of a class component. It's used to modify the **component's state and trigger a re-render** of the component with the updated state.
+
+1. **Triggering a Re-render**: When you call this.setState, React will re-render the component and its children with the updated state. This ensures that the UI stays in sync with the state changes.
+
+2. **Merging State Updates**: The this.setState method does not replace the entire state object but rather merges the new state with the current state. This means that if you only provide a subset of the state properties in the setState call, the remaining properties will remain unchanged.
+
+3. **Asynchronous Nature**: `setState()` is asynchronous. When you call `setState()`, React schedules an update to the component's state. It doesn't immediately update the state object or re-render the component. Instead, React batches state updates and performs them in an optimized manner for performance reasons.
+
+4. **Updating State with an Object**: You can pass an object to `setState()` containing the new state values you want to update. React will merge this object with the current state and re-render the component with the updated state.
+
+#### 💻 Code Snippet
+
+```jsx
+render() {
+    const { count } = this.state;
+
+    return (
+      <div className="user-class">
+        <h1>Class based Component</h1>
+        <h2>Count : {count}</h2>
+
+        <button
+          onClick={() => {
+            this.setState({
+              count: this.state.count + 1,
+            });
+            console.log("count ->", count);
+          }}
+        >
+          INCREASE
+        </button>
+      </div>
+    );
+  }
+```
+
+#### 💻 Output
+
+![demo](/assets/demogif4.gif)
+
+#### 💻 Code snippet
+
+```jsx
+constructor(props) {
+  super(props);
+
+  this.state = {
+    count1: 0,
+    count2: 0,
+    count3: 0
+    count4: 0,
+    count5: 0,
+  }
+}
+```
+
+```jsx
+render() {
+  <div>
+     <h1>{this.state.count1}</h1>
+     <button onClick={() => {
+      this.setState({
+        count1: this.state.count1 + 1;
+      })
+     }}>INCREASE</button>
+  </div>
+}
+```
+
+In this above calling `setState` method and updating only the `count1` and without copying the entire state varaible using spred opeartor `(...)`. 
+
+This is totally fine, Because `setState` only updates the object passed into it and it will not touch anything in the state variable
