@@ -584,3 +584,20 @@ class UserClass extends React.Component {
 ```
 
 ![demo](/assets/demogif6.gif)
+
+### ⚡ `componentWillUnmount()`
+
+
+`componentWillUnmount()` is a lifecycle method in React class components that is invoked immediately before a component is unmounted and removed from the DOM. It is the last opportunity for the component to perform any cleanup or teardown tasks before it is destroyed. 
+
+**When Does it Run?**:
+
+* `componentWillUnmount()` is called just before a component is removed from the DOM and destroyed.
+
+* It is invoked only once during the component's lifecycle, before it is unmounted.
+
+#### 💻 code snippet 
+
+[click here for code to the componentWillUnmount](./Code/UserClass.jsx)
+
+![demo](/assets/demogif7.gif)
