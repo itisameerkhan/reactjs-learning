@@ -96,3 +96,14 @@ class UserClass extends React.Component {
   }
 }
 ```
+
+## ⭐ Creating a State variable in Class Component
+
+In React class components, you can declare state variables anywhere within the class. However, the most common practice is to initialize the state in the **constructor**. This is because the **constructor is called once when the component is initialized**, making it an appropriate place to set up the initial state.
+
+### ⚡ `this.state`
+
+In a React class component, `this.state = {}` is used to initialize the component's state object. The state object is where you store data that belongs to the component and may change over time. By initializing the state in the constructor using `this.state = {}`, you set up the initial state of the component.
+
+> ![NOTE]
+> `state` is reserved keyword in class component
