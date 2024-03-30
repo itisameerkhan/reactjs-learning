@@ -263,7 +263,7 @@ render() {
 
 #### 💻 Output
 
-![demo](/assets/demogif4.gif)
+![demo](/assets/demogif7.gif)
 
 #### 💻 Code snippet
 
@@ -600,4 +600,4 @@ class UserClass extends React.Component {
 
 [click here for code to the componentWillUnmount](./Code/UserClass.jsx)
 
-![demo](/assets/demogif7.gif)
+![demo](/assets/demogif4.gif)
