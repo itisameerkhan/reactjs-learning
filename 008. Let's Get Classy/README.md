@@ -71,6 +71,10 @@ class UserClass extends React.Component {
 }
 ```
 
+### ⚡ `super()` 
+
+The `super(props)` call passes the props parameter to the constructor of the parent class. This allows the parent class to initialize its own properties and perform any necessary setup based on the props passed to the component.
+
 ### ⚡ Accessing Props
 
 
@@ -85,7 +89,7 @@ class UserClass extends React.Component {
   render() {
     return (
       <div className="user-class">
-        <p>{this.props.name}</p>
+        <p>{this.props.name}</p> 
         <h1>Class based Component</h1>
       </div>
     );
