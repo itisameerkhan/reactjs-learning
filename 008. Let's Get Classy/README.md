@@ -105,5 +105,5 @@ In React class components, you can declare state variables anywhere within the c
 
 In a React class component, `this.state = {}` is used to initialize the component's state object. The state object is where you store data that belongs to the component and may change over time. By initializing the state in the constructor using `this.state = {}`, you set up the initial state of the component.
 
-> [!NOTE]
+> [!IMPORTANT]
 > `state` is reserved keyword in class component
