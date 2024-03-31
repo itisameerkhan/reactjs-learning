@@ -601,3 +601,140 @@ class UserClass extends React.Component {
 [click here for code to the componentWillUnmount](./Code/UserClass.jsx)
 
 ![demo](/assets/demogif4.gif)
+
+> [!NOTE]
+> the traditional React component lifecycle methods such as `componentDidMount`, `componentDidUpdate`, `componentWillUnmount`, etc., are not applicable to functional components in React. These lifecycle methods are specific to class components.
+
+### ⚡ Functional Component uses Class Component Behind the Scenes ?
+
+No, functional components do not use class-based components behind the scenes. They are completely separate concepts in React.
+
+In React, functional components and class components are two different types of components that you can use to define the UI of your application. Functional components are defined using JavaScript functions, while class components are defined using JavaScript classes.
+
+
+### ⚡ `previousState` and `previousProps` in `componentDidUpdate`
+
+Consider the functional component, where the `useEffect` calls when `count` updates
+
+#### 💻 code snippet 
+
+```jsx
+useEffect(() => {
+
+},[count])
+```
+
+In class based component, we need `componentDidUpdate`
+
+
+In the `componentDidUpdate()` lifecycle method of a React class component, the parameters `prevProps` and `prevState` represent the previous props and state values before the most recent update, respectively. These parameters allow you to compare the previous props and state with the current props and state to determine if any specific actions need to be taken based on changes.
+
+**previousProps**:
+
+1. `previousProps` is an object that contains the props of the component before the most recent update.
+
+2. It allows you to compare the previous props with the current props to detect changes in prop values.
+
+3. You can use prevProps to implement conditional logic based on prop changes and perform actions accordingly.
+
+**previousState**:
+
+1. `previousState` is an object that contains the state of the component before the most recent update.
+
+2. It allows you to compare the previous state with the current state to detect changes in state values.
+3. You can use prevState to implement conditional logic based on state changes and perform actions accordingly.
+
+```jsx
+class UserClass extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      count: 0,
+    };
+  };
+
+  componentDidUpdate(previousProps, previousState) {
+    if(previousState.count !== this.state.count) {
+      {/* UPDATE LOGIC */}
+    }
+  };
+
+  render() {
+    return (
+      <h1>something</h1>
+    )
+  }
+}
+```
+
+### ⚡Functionality of `componentWillUnmount`
+
+The `componentWillUnmount()` lifecycle method in React class components is used for cleanup tasks and resource management before a component is unmounted and removed from the DOM. It provides an opportunity to perform any necessary cleanup, such as unsubscribing from event listeners, clearing timers, canceling network requests, or disposing of any resources that were allocated during the component's lifecycle. 
+
+#### 💻 code snippet
+
+```jsx
+class UserClass extends React.Component {
+  constructor(props) {
+    console.log("About us Page");
+    super(props);
+  }
+
+  componentDidMount() {
+    setInterval(() => {
+      console.log("NAMASTE REACT 🚀");
+    }, 1000);
+  }
+
+  render() {
+    return (
+      <div className="user-card"></div>
+    );
+  }
+}
+```
+
+![demo](/assets/demogif8.gif)
+
+ When the component mounts, it starts a `setInterval` function that logs `"NAMASTE REACT 🚀"` to the console every second. However, if the user navigates away from the component (e.g., switches to a different page in a single-page application), the component remains mounted, and the `setInterval` continues running in the background. This can lead to potential memory leaks or unnecessary resource consumption, as the `setInterval` function keeps executing even if the component is no longer visible or needed. To avoid this issue, it's important to clear or cancel any intervals or timers in the componentWillUnmount lifecycle method when the component is unmounted or destroyed.
+
+ When the component mounts, it starts the `setInterval` function, which logs a message to the console at regular intervals. However, when navigating away from the component and then returning to it in a single-page application (SPA), the component remounts, causing a new `setInterval` to start without clearing the previous one. As a result, multiple `setInterval` instances may run concurrently,
+
+ ![demo](/assets/demogif9.gif)
+
+ > [!NOTE]
+ > Due to the nature of single-page applications (SPAs), where content is dynamically loaded and navigated without full page reloads, components may mount and unmount multiple times as users navigate between different views or pages.
+
+ #### 💻 Code snippet (solution for `setInterval`)
+
+```jsx
+componentDidMount() {
+    this.timer = setInterval(() => {
+      console.log("NAMASTE REACT 🚀");
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer)
+  }
+```
+
+![demo](/assets/demogif10.gif)
+
+#### 💻 Cleanup in `useEffect`
+
+
+In a functional component, you can perform cleanup tasks in the `useEffect` Hook by **returning** a cleanup function. 
+
+```jsx
+useEffect(() => {
+    const timer = setInterval(() => {
+      console.log("NAMASTE REACT 🚀 from useEffect");
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    }
+}, []);
+```
