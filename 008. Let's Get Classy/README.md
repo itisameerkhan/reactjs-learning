@@ -725,7 +725,8 @@ componentDidMount() {
 #### 💻 Cleanup in `useEffect`
 
 
-In a functional component, you can perform cleanup tasks in the `useEffect` Hook by **returning** a cleanup function. 
+In a functional component, you can perform cleanup tasks in the `useEffect` Hook by **returning** a cleanup function.
+
 
 ```jsx
 useEffect(() => {
