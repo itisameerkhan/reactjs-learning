@@ -47,8 +47,10 @@ import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
-  const resInfo = useRestaurantMenu(resId);
+  const resInfo = useRestaurantMenu(resId); {* <-- Custom Hook *}
 
   ....
-}
-```
+``` 
+
+>[!IMPORTANT]
+> If you don't use the "use" prefix for your custom hooks, the linter may flag it as a violation of coding standards or conventions, depending on the specific rules configured in your linter setup. 
