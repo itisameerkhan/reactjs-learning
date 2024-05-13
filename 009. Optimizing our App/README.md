@@ -153,3 +153,11 @@ When i trying to visit `/grocery` the page throws an error, but in the `Network`
 And also it added to the `dist` folder 
 
 ![demo](../assets/demo47.png)
+
+<br>
+
+you have a route `/grocery` that triggers the lazy loading of a component using `lazy`. Without a `Suspense` component to handle loading states, when navigating to the `/grocery` route, React will start fetching the component code asynchronously. However, since there is no fallback UI specified, the page will remain blank or display incomplete content until the component is fully loaded.
+
+![demo](../assets/demo48.png)
+
+The Example picture provided above is shows the Error Page, but not the `Grocery` component. Because the when you visit the link `/grocery` React will visit very quickly, on the other hand the Lazy loaded component `<Grocery />` loaded slowly as you can see on Network tab and it takes about **447ms** to load. Due to this React suspend its loading and displays the error element.
