@@ -161,3 +161,43 @@ you have a route `/grocery` that triggers the lazy loading of a component using 
 ![demo](../assets/demo48.png)
 
 The Example picture provided above is shows the Error Page, but not the `Grocery` component. Because the when you visit the link `/grocery` React will visit very quickly, on the other hand the Lazy loaded component `<Grocery />` loaded slowly as you can see on Network tab and it takes about **447ms** to load. Due to this React suspend its loading and displays the error element.
+
+To fix this we need `Suspense` component
+
+### ⚡ Suspense
+
+When you use `lazy` to lazily load a component, **React suspends rendering while the component is being loaded asynchronously**. During this suspended state, React needs to display a fallback UI to indicate to the user that content is loading.
+
+1. **Initiating Lazy Loading**: When you use React.lazy to import a component lazily, React starts fetching the component code asynchronously as soon as the lazy-loaded component is rendered or encountered in the component tree.
+
+2. **Suspended State**: While the lazy-loaded component is being fetched, React suspends rendering of the component tree. This means that React will not render any part of the tree that depends on the lazy-loaded component until it is fully loaded.
+
+3. **Fallback UI**: To provide visual feedback to the user during the loading process, you use the **Suspense** component to specify a fallback UI to render while the lazy-loaded component is being loaded. This fallback UI can be any React element, such as a loading spinner, progress indicator, or placeholder content.
+
+4. **Resuming Rendering**: Once the lazy-loaded component is fully loaded, React resumes rendering the suspended component tree and replaces the fallback UI with the actual content of the lazy-loaded component.
+
+> App.js
+
+```js
+
+const Grocery = lazy(() => import("./components/Grocery"));
+
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<h1>Loading....</h1>}>
+            <Grocery />
+          </Suspense>
+        ),
+      },
+    ],
+  },
+]);
+```
+![demo](../assets/demogif13.gif)
