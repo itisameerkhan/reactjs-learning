@@ -51,3 +51,7 @@ const RestaurantCardVeg = withVegLabel(RestaurantCard);
 
 1. [Body.jsx](./code/Body.jsx) 
 2. [RestaurantCard.jsx](./code/RestaurantCard.jsx)
+
+Think of `withVegLabel` as a wrapper that adds a "Veg" badge to a product card. If the product is vegetarian, it adds the badge; otherwise, it displays the product card as is. This way, the core product card design remains unchanged, but you have the flexibility to enhance it with additional information when needed.
+
+![demo](../assets/demo50.png)
