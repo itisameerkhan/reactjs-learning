@@ -1,7 +1,7 @@
 # 📍Igniting our App
 
 <div align="center">
-<img src="https://media.licdn.com/dms/image/D5616AQE4VwlLmDlJLg/profile-displaybackgroundimage-shrink_200_800/0/1686221170579?e=2147483647&v=beta&t=YuBbJlONaNDpAutjM-ZoNVtLPHt3xHbfZlIiHGHztJE" />
+<img src="https://image.cnbcfm.com/api/v1/image/107204282-1678197288065-gettyimages-1247844410-AFP_33AN4HF.jpeg?v=1678197528&w=929&h=523&vtcrop=y" />
 </div>
 
 ## ⭐ What is **Bundler**?
