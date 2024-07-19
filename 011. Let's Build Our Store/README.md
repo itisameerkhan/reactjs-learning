@@ -52,3 +52,129 @@ A slice represents a single unit of the Redux state and includes:
 ![demo](../assets/demo53.png)
 
 ![demo](../assets/demo16.jpg)
+
+---
+
+## Reduxjs/Toolkit
+
+| Sno. | Context | 
+| --- | --- |
+| 1. | installation `@reduxjs/toolkit` and `react-redux`
+| 2. | Build our store
+| 3. | Connect our store to our app
+| 4. | create Slice (cartSlice)
+| 5. | dispatch(action)
+| 6. | Selector
+
+---
+
+### ⚡ Installation
+
+```
+npm i @reduxjs/toolkit react-redux
+```
+
+### ⚡ Build our store
+
+> utils/appStore.js
+
+```js
+import { configureStore } from "@reduxjs/toolkit";
+
+const appStore = configureStore();
+
+export default appStore;
+```
+
+### ⚡ Connect our store to our app
+
+> App.js
+
+```jsx
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+```
+
+```jsx
+
+root.render(
+  <Provider store={appStore}>
+    <RouterProvider router={appRouter} />
+  </Provider>
+);
+```
+
+### ⚡create Slice (cartSlice)
+
+> config/cartSlice.js
+
+```js
+import { createSlice } from "@reduxjs/toolkit";
+
+const cartSlice = createSlice({
+  name: "cart",
+  initialState: {
+    items: [],
+  },
+  reducers: {
+    addItem: (state, action) => {
+      state.items.push(action.payload);
+    },
+    removeItem: (state, action) => {
+      state.items.pop();
+    },
+    clearCart: (state, action) => {
+      state.items.length = 0
+    },
+  },
+});
+
+export const { addItem, removeItem, clearCart } = cartSlice.actions;
+export default cartSlice.reducer;
+```
+
+> /config/appStore.js
+
+```js
+import { configureStore } from "@reduxjs/toolkit";
+import cartReducer from "./cartSlice";
+
+const appStore = configureStore({
+  reducer: {
+    cart: cartReducer,
+  },
+});
+
+export default appStore; 
+```
+
+---
+
+In vanilla Redux (using the Redux library without additional helpers like Redux Toolkit), state management involves adhering strictly to the principles of immutability. This means that instead of directly mutating the state, you return a new state object with the necessary changes.
+
+### Vanilla Redux
+
+In vanilla Redux, reducers must always return a new state object rather than mutating the existing state. This immutability is crucial for enabling features like time-travel debugging and predictable state updates. When you need to update the state, you typically use techniques like object spreading or array spreading to create a copy of the state with the necessary changes.
+
+#### example code 
+```
+const newState = [...state];
+newState.item.push(action.payload);
+return newState
+```
+
+> [!NOTE]
+> Reduxjs uses immer
+
+### How Redux State Immutability Works
+
+When you write a reducer function in Redux, the `state` parameter is a reference to the current state. Directly mutating this state inside the reducer is against Redux principles because Redux expects you to return a new state object. If you mutate the state directly, it might appear to change locally within the reducer function, but this does not actually update the state in the Redux store. Redux cannot detect these changes, leading to bugs and inconsistencies.
+
+### console log from slice
+
+```js
+clearCart: (state, action) => {
+  console.log(current(state));
+  state.items = [];
+},
+```
