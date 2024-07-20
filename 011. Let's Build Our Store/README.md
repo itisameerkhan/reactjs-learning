@@ -178,3 +178,4 @@ clearCart: (state, action) => {
   state.items = [];
 },
 ```
+---
